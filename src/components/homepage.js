@@ -7,7 +7,7 @@ import { ScrollMenu } from "react-horizontal-scrolling-menu";
 import LeftScroll from "./HorizontalScroll/LeftScroll";
 import RightScroll from "./HorizontalScroll/RightScroll";
 import Carousel from "react-material-ui-carousel";
-import "./homepage.css";
+import style from "./homepage.module.css";
 
 function Homepage() {
   const [data, setData] = useState({});
@@ -49,6 +49,7 @@ function Homepage() {
   return (
     <Grid container spacing={2}>
       <Grid
+        // className={style.topNavLogo}
         item
         container
         sx={{
@@ -56,10 +57,14 @@ function Homepage() {
           width: "100%",
           //   padding: "2rem",
           display: "flex",
-          justifyContent: "flex-start",
+          justifyContent: {
+            lg: "flex-start",
+            md: "center",
+            sm: "center",
+            xs: "center",
+          },
           alignItems: "center",
         }}
-        className="topNavLogo"
       >
         <Grid
           item
@@ -67,6 +72,7 @@ function Homepage() {
           sm={3}
           md={3}
           lg={3}
+          // className={style.topNavLogo}
           sx={{
             border: "1px solid #fff",
             display: "flex",
@@ -80,6 +86,7 @@ function Homepage() {
         >
           <Typography
             sx={{ color: "white", fontSize: "1.3em", fontWeight: "400" }}
+            // className={style.topNavLogo}
           >
             MyTestApp
           </Typography>
@@ -93,14 +100,20 @@ function Homepage() {
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           height: "90vh",
-          width: "100vw",
+          width: "100%",
           display: "flex",
+          justifyContent: {
+            lg: "flex-start",
+            md: "center",
+            sm: "center",
+            xs: "center",
+          },
           alignItems: "center",
         }}
       >
-        <Grid sx={{ zIndex: "100", width: "20%", marginLeft: "4rem" }}>
+        <Grid sx={{ zIndex: "100", width: "30%", display: "flex", marginLeft: "4rem", justifyContent: {lg: "left", md: "center", sm: "center", xs: "center"} }}>
           <Typography
-            sx={{ color: "#fff", fontSize: "4em", fontWeight: "600" }}
+            sx={{ color: "#fff", fontSize: "4em", fontWeight: "600", textAlign: {lg:"left", md: "center", sm: "center", xs: "center"} }}
           >
             Watch something incredible.
           </Typography>
@@ -117,11 +130,11 @@ function Homepage() {
           sx={{ marginBottom: "2rem" }}
         >
           <InputLabel>Search</InputLabel>
-          <TextField sx={{ width: "95%" }} />
+          <TextField sx={{width: "90%"}}/>
         </Grid>
       </Grid>
 
-      <Grid item container sx={{ marginLeft: "4rem", width:"100%" }}>
+      <Grid item container sx={{ marginLeft: "4rem", width: "100%" }}>
         <Grid
           item
           xs={12}
@@ -138,17 +151,24 @@ function Homepage() {
           sm={12}
           md={12}
           lg={12}
-          sx={{ display: "flex", alignItems: "center", justifyContent:"center", width:"100%" }}
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            // justifyContent: "center",
+            width: "100%",
+          }}
         >
-          <BasicCard movieTitle={data.Title} onClick={handleClick} />
-          <BasicCard movieTitle={data.Title} onClick={handleClick} />
-          <BasicCard movieTitle={data.Title} onClick={handleClick} />
-          <BasicCard movieTitle={data.Title} onClick={handleClick} />
-          <BasicCard movieTitle={data.Title} onClick={handleClick} />
+          <Carousel sx={{width: "50%"}}>
+            <BasicCard movieTitle={data.Title} onClick={handleClick} />
+            <BasicCard movieTitle={data.Title} onClick={handleClick} />
+            <BasicCard movieTitle={data.Title} onClick={handleClick} />
+            <BasicCard movieTitle={data.Title} onClick={handleClick} />
+            <BasicCard movieTitle={data.Title} onClick={handleClick} />
+          </Carousel>
         </Grid>
       </Grid>
 
-      <Grid item container sx={{ marginLeft: "4rem", width:"100%" }}>
+      <Grid item container sx={{ marginLeft: "4rem", width: "100%" }}>
         <Grid
           item
           xs={12}
@@ -165,13 +185,20 @@ function Homepage() {
           sm={12}
           md={12}
           lg={12}
-          sx={{ display: "flex", alignItems: "center", justifyContent:"center", width:"100%" }}
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            // justifyContent: "center",
+            width: "100%",
+          }}
         >
-          <BasicCard movieTitle={data.Title} />
-          <BasicCard movieTitle={data.Title} />
-          <BasicCard movieTitle={data.Title} />
-          <BasicCard movieTitle={data.Title} />
-          <BasicCard movieTitle={data.Title} />
+          <Carousel sx={{width: "50%"}}>
+            <BasicCard movieTitle={data.Title} onClick={handleClick} />
+            <BasicCard movieTitle={data.Title} onClick={handleClick} />
+            <BasicCard movieTitle={data.Title} onClick={handleClick} />
+            <BasicCard movieTitle={data.Title} onClick={handleClick} />
+            <BasicCard movieTitle={data.Title} onClick={handleClick} />
+          </Carousel>
         </Grid>
       </Grid>
     </Grid>
